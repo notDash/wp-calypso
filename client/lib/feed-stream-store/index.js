@@ -45,6 +45,11 @@ function mixedKeyMaker( post ) {
 	return siteKeyMaker( post );
 }
 
+const recommendedKeyMaker = post => ( {
+	...siteKeyMaker( post ),
+	isRecommendation: true }
+);
+
 function addMetaToNextPageFetch( params ) {
 	params.meta = 'post,discover_original_post';
 }
@@ -183,7 +188,7 @@ function getStoreForRecommendedPosts( storeId ) {
 	const stream = new PagedStream( {
 		id: storeId,
 		fetcher: fetcher,
-		keyMaker: siteKeyMaker,
+		keyMaker: recommendedKeyMaker,
 		perPage: 6,
 	} );
 
