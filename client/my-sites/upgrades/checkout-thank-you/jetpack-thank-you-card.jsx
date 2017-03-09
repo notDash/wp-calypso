@@ -194,7 +194,7 @@ class JetpackThankYouCard extends Component {
 	}
 
 	renderFeaturePlaceholders() {
-		const placeholderCount = !! this.props.whitelist ? 1 : 3;
+		const placeholderCount = !! this.props.whitelist ? 1 : 2;
 		return range( placeholderCount ).map( i => {
 			return this.renderPlugin( i );
 		} );
