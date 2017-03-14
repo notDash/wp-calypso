@@ -59,7 +59,7 @@ const ApplicationPasswordsItem = React.createClass( {
 						}
 					</p>
 				</div>
-				<Button borderless icon className="application-password-item__revoke"
+				<Button borderless className="application-password-item__revoke"
 					onClick={ this.recordClickEvent( 'Remove Application Password Button', this.removeApplicationPassword ) }
 				>
 				<Gridicon icon="cross" /></Button>
