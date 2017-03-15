@@ -9,6 +9,7 @@ import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
  */
 import sitesSync from './sites/enhancer';
 import noticesMiddleware from './notices/middleware';
+import happychatMiddleware from './happychat/middleware';
 import application from './application/reducer';
 import accountRecovery from './account-recovery/reducer';
 import automatedTransfer from './automated-transfer/reducer';
@@ -123,6 +124,7 @@ export function createReduxStore( initialState = {} ) {
 		isBrowser && require( './analytics/middleware.js' ).analyticsMiddleware,
 		isBrowser && require( './data-layer/wpcom-api-middleware.js' ).default,
 		isAudioSupported && require( './audio/middleware.js' ).default,
+		happychatMiddleware,
 	].filter( Boolean );
 
 	const enhancers = [

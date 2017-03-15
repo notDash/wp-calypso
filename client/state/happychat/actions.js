@@ -139,3 +139,8 @@ export const sendChatMessage = message => dispatch => {
 	dispatch( clearChatMessage() );
 	connection.send( message );
 };
+
+export const sendEventMessage = message => () => {
+	debug( 'sending event message', message );
+	connection.sendEvent( message );
+};
