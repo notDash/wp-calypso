@@ -119,7 +119,7 @@ export const connectChat = () => ( dispatch, getState ) => {
 		.on( 'status', status => dispatch( setHappychatChatStatus( status ) ) )
 		.on( 'accept', accept => dispatch( setHappychatAvailable( accept ) ) )
 		.on( 'disconnect', () => dispatch( setChatDisconnected() ) )
-		.on( 'reconnect', () => dispatch( setChatConnecting() ) );
+		.on( 'reconnecting', () => dispatch( setChatConnecting() ) );
 
 	// create new session id and get signed identity data for authenticating
 	startSession()
