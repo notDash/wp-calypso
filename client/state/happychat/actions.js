@@ -12,6 +12,7 @@ import buildConnection from 'lib/happychat/connection';
 import {
 	HAPPYCHAT_CONNECTING,
 	HAPPYCHAT_CONNECTED,
+	HAPPYCHAT_DISCONNECTED,
 	HAPPYCHAT_SET_MESSAGE,
 	HAPPYCHAT_RECEIVE_EVENT,
 	HAPPYCHAT_SET_AVAILABLE,
@@ -53,6 +54,7 @@ const setHappychatChatStatus = status => ( {
 
 const setChatConnecting = () => ( { type: HAPPYCHAT_CONNECTING } );
 const setChatConnected = () => ( { type: HAPPYCHAT_CONNECTED } );
+const setChatDisconnected = () => ( { type: HAPPYCHAT_DISCONNECTED } );
 const setChatMessage = message => {
 	if ( isEmpty( message ) ) {
 		connection.notTyping();
@@ -110,19 +112,21 @@ export const connectChat = () => ( dispatch, getState ) => {
 		return;
 	}
 	dispatch( setChatConnecting() );
+
+	connection
+		.on( 'connect', () => dispatch( setChatConnected() ) )
+		.on( 'message', event => dispatch( receiveChatEvent( event ) ) )
+		.on( 'status', status => dispatch( setHappychatChatStatus( status ) ) )
+		.on( 'accept', accept => dispatch( setHappychatAvailable( accept ) ) )
+		.on( 'disconnect', () => dispatch( setChatDisconnected() ) )
+		.on( 'reconnect', () => dispatch( setChatConnecting() ) );
+
 	// create new session id and get signed identity data for authenticating
 	startSession()
 	.then( ( { session_id } ) => sign( { user, session_id } ) )
 	.then( ( { jwt } ) => connection.open( user.ID, jwt, locale ) )
 	.then(
-		() => {
-			dispatch( setChatConnected() );
-			dispatch( requestTranscript() );
-			connection
-			.on( 'message', event => dispatch( receiveChatEvent( event ) ) )
-			.on( 'status', status => dispatch( setHappychatChatStatus( status ) ) )
-			.on( 'accept', accept => dispatch( setHappychatAvailable( accept ) ) );
-		},
+		() => dispatch( requestTranscript() ),
 		e => debug( 'failed to start happychat session', e, e.stack )
 	);
 };
