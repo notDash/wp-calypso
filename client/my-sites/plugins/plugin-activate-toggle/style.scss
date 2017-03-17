@@ -8,7 +8,29 @@
 	margin-right: 8px;
 	vertical-align: top;
 	text-transform: uppercase;
+	color: $gray;
+}
+.plugin-activate-toggle__link:hover {
+	color: $link-highlight;
 }
 .plugin-activate-toggle__disabled {
 	color: 	lighten( $gray, 30% );
 }
+.plugin-activate-toggle__link a {
+	color: currentcolor;
+}
+
+.plugin-activate-toggle__icon {
+	display: inline-block;
+	vertical-align: inherit;
+	padding-left: 2px;
+
+	.gridicons-cog {
+		transform: translate(.5px, .5px);
+		cursor: pointer;
+		&:hover{
+			color: currentcolor;
+		}
+	}
+}
+
