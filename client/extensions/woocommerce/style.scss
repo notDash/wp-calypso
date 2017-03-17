@@ -1,26 +1,27 @@
-.product-variation-types-form {
-	margin-top: 15px;
+.product-variation-types-form__wrapper {
+	margin-top: 16px;
 }
 
 .product-variation-types-form__group {
 
-	.product-variation-types-form__fieldset, .product-variation-types-form__labels {
+	.product-variation-types-form__fieldset,
+	.product-variation-types-form__labels {
 		display: flex;
-		margin-left: -15px;
-		margin-bottom: 20px;
+	}
+
+	.product-variation-types-form__fieldset {
+		margin-bottom: 16px;
 	}
 
 	.product-variation-types-form__field {
 		width: 50%;
-		margin-left: 15px;
 	}
 
 	.product-variation-types-form__label {
 		width: 35%;
-		margin-left: 15px;
 	}
 
 	.token-field {
-		margin-left: 15px;
+		margin-left: 16px;
 	}
 }

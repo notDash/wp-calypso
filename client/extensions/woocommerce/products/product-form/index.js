@@ -43,8 +43,8 @@ export default class ProductForm extends Component {
 			<Card>
 
 				<FormToggle onChange={ this.handleToggle } checked={ this.state.isVariation }>
-					{ isNewProduct ? i18n.translate( 'Does this product have options like size and color?' )
-					: i18n.translate( 'Does %(productName)s have options like size and color?', {
+					{ isNewProduct ? i18n.translate( 'This product has variations, for example size and color.' )
+					: i18n.translate( '%(productName) has variations, for example size and color.', {
 						args: {
 							productName: this.props.product.name,
 						}
@@ -52,7 +52,7 @@ export default class ProductForm extends Component {
 					}
 				</FormToggle>
 
-				{ this.state.isVariation  && (
+				{ this.state.isVariation && (
 					<ProductVariationTypesForm />
 				) }
 			</Card>
