@@ -7,7 +7,7 @@ import i18n from 'i18n-calypso';
 /**
  * Internal dependencies
  */
-import Card from 'components/card';
+import FoldableCard from 'components/foldable-card';
 import ProductVariationTypesForm from '../product-variation-types-form';
 import FormToggle from 'components/forms/form-toggle';
 
@@ -40,9 +40,10 @@ export default class ProductForm extends Component {
 	render() {
 		const isNewProduct = this.props.product ? false : true;
 		return (
-			<Card>
-
-				<FormToggle onChange={ this.handleToggle } checked={ this.state.isVariation }>
+			<FoldableCard
+				icon=""
+				expanded={ true }
+				header={ ( <FormToggle onChange={ this.handleToggle } checked={ this.state.isVariation }>
 					{ isNewProduct ? i18n.translate( 'This product has variations, for example size and color.' )
 					: i18n.translate( '%(productName) has variations, for example size and color.', {
 						args: {
@@ -51,11 +52,13 @@ export default class ProductForm extends Component {
 					} )
 					}
 				</FormToggle>
+				) }
+			>
 
 				{ this.state.isVariation && (
 					<ProductVariationTypesForm />
 				) }
-			</Card>
+			</FoldableCard>
 		);
 	}
 
