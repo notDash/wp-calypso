@@ -5,7 +5,7 @@
 .plugin-activate-toggle__link {
 	font-size: 11px;
 	line-height: 16px;
-	margin-right: 8px;
+	margin-right: 12px;
 	vertical-align: top;
 	text-transform: uppercase;
 	color: $gray;
@@ -39,7 +39,6 @@
 .plugin-activate-toggle__icon {
 	display: inline-block;
 	vertical-align: inherit;
-	padding-right: 8px;
 	float: right;
 
 	.gridicons-cog {
