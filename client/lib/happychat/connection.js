@@ -65,9 +65,8 @@ class Connection extends EventEmitter {
 	}
 
 	sendEvent( message ) {
-		const msg = { text: message, id: uuid(), type: 'customer-event', meta: { forOperator: true, event_type: 'customer-event' } };
 		this.openSocket.then(
-			socket => socket.emit( 'message', msg ),
+			socket => socket.emit( 'message', { text: message, id: uuid(), type: 'customer-event', meta: { forOperator: true, event_type: 'customer-event' } } ),
 			e => debug( 'failed to send message', e )
 		);
 	}
