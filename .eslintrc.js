@@ -1,3 +1,5 @@
+const resolveConfig = require( './webpack.config.resolve.js' );
+
 module.exports = {
 	root: true,
 	'extends': 'wpcalypso/react',
@@ -9,6 +11,21 @@ module.exports = {
 	},
 	globals: {
 		asyncRequire: true
+	},
+	plugins: [
+		'import'
+	],
+	settings: {
+		'import/ignore': [
+			'server\/.*$',
+		],
+		'import/resolver': {
+			webpack: {
+				config: {
+					resolve: resolveConfig,
+				}
+			},
+		}
 	},
 	// Ideally, we should not have a `rules` block here at all, save for some
 	// Calypso-specific rules (no-unused-expressions, camelcase). The remainder
@@ -23,6 +40,16 @@ module.exports = {
 		curly: 1,
 		'computed-property-spacing': [ 1, 'always' ],
 		'func-call-spacing': 1,
+		// TODO: Migrate the following to eslint-config-wpcalypso
+		'import/no-unresolved': 1, // Upgrade to errors after migrating client to ES2015
+		'import/named': 1,         // Upgrade to errors after migrating client to ES2015
+		'import/namespace': 1,     // Upgrade to errors after migrating client to ES2015
+		'import/default': 1,       // Upgrade to errors after migrating client to ES2015
+		'import/export': 1,        // Upgrade to errors after migrating client to ES2015
+		'import/no-commonjs': 1,   // Upgrade to errors after migrating client to ES2015
+		'import/no-named-as-default': 1,
+		'import/no-named-as-default-member': 1,
+		'import/no-duplicates': 1,
 		indent: [ 1, 'tab', { SwitchCase: 1 } ],
 		'jsx-quotes': [ 1, 'prefer-double' ],
 		'key-spacing': 1,
