@@ -106,7 +106,7 @@ class HandleEmailedLinkForm extends React.Component {
 		return (
 			<EmptyContent
 				action={ action }
-				illustration={ '/calypso/images/drake/drake-ok.svg' }
+				illustration={ '/calypso/images/drake/drake-nosites.svg' }
 				illustrationWidth={ 500 }
 				line={ line }
 				secondaryAction={ translate( 'Enter a password instead' ) }
