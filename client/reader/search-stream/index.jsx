@@ -242,4 +242,4 @@ class SearchStream extends Component {
 	}
 }
 
-export default SuggestionProvider( 3 )( localize( SearchStream ) );
+export default SuggestionProvider( 3, localize( SearchStream ) );
