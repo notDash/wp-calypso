@@ -1172,7 +1172,7 @@
       }
     },
     "es5-ext": {
-      "version": "0.10.14",
+      "version": "0.10.15",
       "dev": true
     },
     "es6-iterator": {
@@ -1341,7 +1341,7 @@
       }
     },
     "eslint-config-wpcalypso": {
-      "version": "0.7.0",
+      "version": "0.7.1",
       "dev": true
     },
     "eslint-plugin-jsx-a11y": {
